@@ -30,12 +30,13 @@ func NewMyStack(scope constructs.Construct, id string) cdktf.TerraformStack {
 
 func main() {
 	app := cdktf.NewApp(nil)
-	stack := NewMyStack(app, "aws_instance")
-	cdktf.NewRemoteBackend(stack, &cdktf.RemoteBackendProps{
-		Hostname:     jsii.String("app.terraform.io"),
-		Organization: jsii.String("<YOUR_ORG>"),
-		Workspaces:   cdktf.NewNamedRemoteWorkspace(jsii.String("learn-cdktf")),
-	})
+	NewMyStack(app, "aws_instance")
+	// stack := NewMyStack(app, "aws_instance")
+	// cdktf.NewRemoteBackend(stack, &cdktf.RemoteBackendProps{
+	// 	Hostname:     jsii.String("app.terraform.io"),
+	// 	Organization: jsii.String("<YOUR_ORG>"),
+	// 	Workspaces:   cdktf.NewNamedRemoteWorkspace(jsii.String("learn-cdktf")),
+	// })
 
 	app.Synth()
 }
